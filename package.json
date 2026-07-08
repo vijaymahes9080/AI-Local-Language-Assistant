@@ -1,0 +1,20 @@
+{
+  "name": "lingosphere-ai-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "author": {
+    "name": "Vijay Mahes",
+    "email": "Vijaypradhap2004@gmail.com"
+  },
+  "workspaces": [
+    "apps/web",
+    "apps/admin"
+  ],
+  "scripts": {
+    "dev:web": "npm run dev -w apps/web",
+    "dev:admin": "npm run dev -w apps/admin",
+    "build:web": "npm run build -w apps/web",
+    "build:admin": "npm run build -w apps/admin",
+    "install:all": "npm install"
+  }
+}
