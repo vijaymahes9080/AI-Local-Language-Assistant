@@ -8,7 +8,7 @@ import {
 
 interface Message {
   role: "user" | "assistant" | "system";
-  content: str;
+  content: string;
   agent?: string;
   latency?: number;
   flagged?: boolean;
