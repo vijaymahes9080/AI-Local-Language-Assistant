@@ -1,5 +1,7 @@
 # LingoSphere AI — Startup-Grade Multilingual Assistant Platform
 
+![LingoSphere AI Banner](assets/hero_banner.png)
+
 LingoSphere AI is a production-ready, modular, local-language assistant platform built entirely without dependencies on English comprehension. The system supports multi-modal user interactions (voice streaming, chat message history, document parsing, and RAG search query matching) translated into regional scripts and local dialects.
 
 In alignment with production constraints, **Docker is omitted** and standard local execution scripting is provided.
@@ -42,6 +44,22 @@ lingosphere-ai-monorepo/
 ├── package.json               # Root workspaces configuration
 └── run.ps1                    # PowerShell local launcher & test runner
 ```
+
+---
+
+## 🖼️ Interface Previews
+
+### Customer Portal
+The consumer-facing portal is designed for high-fidelity regional language voice streaming and messaging, featuring automatic speech recognition (ASR), real-time transcription, and context-aware translations.
+
+![Customer Portal Mockup](assets/customer_portal.png)
+
+---
+
+### Admin Control Console
+The centralized control console handles system observability, displays real-time telemetry, and triggers security alerts for blocked firewall attempts.
+
+![Admin Control Console](assets/admin_console.png)
 
 ---
 
