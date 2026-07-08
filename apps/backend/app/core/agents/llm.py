@@ -83,7 +83,9 @@ def simulate_agent_response(system_prompt: str, user_prompt: str, json_mode: boo
     # JSON Mode is typically used by the Orchestrator
     if json_mode:
         # Check intent keyword clues
-        if "translate" in text or "explain word" in text or "meaning" in text:
+        if "idiom" in text or "proverb" in text or "metaphor" in text or "slang" in text or "piece of cake" in text or "cats and dogs" in text or "blue moon" in text or "bite the bullet" in text or "break a leg" in text:
+            agent = "CULTURAL_LOCALIZER"
+        elif "translate" in text or "explain word" in text or "meaning" in text:
             agent = "TRANSLATOR"
         elif "plan" in text or "todo" in text or "schedule" in text or "make a list" in text:
             agent = "PLANNER"
@@ -120,6 +122,22 @@ def simulate_agent_response(system_prompt: str, user_prompt: str, json_mode: boo
         elif lang == "hindi":
             return "Translation result:\nScript: नमस्ते, आप कैसे हैं?\nTransliteration: Namaste, aap kaise hain?\nEnglish: Hello, how are you?"
         return "Translation result:\nScript: Hello, how are you?\nExplanation: Standard greeting across all target languages."
+
+    # Cultural Localizer Agent
+    if "cultural idiom & metaphor localizer" in system_prompt.lower():
+        if lang == "tamil":
+            if "cats and dogs" in text or "raining" in text:
+                return "Cultural Translation (Tamil):\nScript: பேய்க்காற்றுடன் பெருமழை பெய்கிறது (மழை வெளுத்து வாங்குகிறது)\nTransliteration: Peykkaatrudan perumazhai peygirathu (mazhai veluthu vaangugirathu)\nExplanation: Instead of a literal translation of falling cats/dogs, this uses the cultural phrase meaning 'raining heavily like a devil's wind' or 'bleaching rain' (pouring intensely)."
+            elif "piece of cake" in text or "easy" in text:
+                return "Cultural Translation (Tamil):\nScript: இது எனக்குச் சுண்டல் சாப்பிடுவது போல (கைவந்த கலை)\nTransliteration: Ithu enakku sundal saapiduvathu pola (kaivantha kalai)\nExplanation: Equivalent to 'a piece of cake', meaning a task as effortless as eating boiled chickpeas or an art in one's hand."
+            return "Cultural Translation (Tamil):\nScript: அத்திப்பூத்தாற்போல\nTransliteration: Athippoothaarpola\nExplanation: Matches 'once in a blue moon', referring to the extremely rare blossoming of a fig tree."
+        elif lang == "hindi":
+            if "piece of cake" in text or "easy" in text:
+                return "Cultural Translation (Hindi):\nScript: यह तो बाएँ हाथ का खेल है\nTransliteration: Yeh toh baayein haath ka khel hai\nExplanation: Literally 'a game of the left hand', which is the cultural equivalent for a very easy task ('a piece of cake')."
+            elif "bite the bullet" in text or "difficult" in text:
+                return "Cultural Translation (Hindi):\nScript: लोहे के चने चबाना\nTransliteration: Lohe ke chane chabaana\nExplanation: Literally 'to chew iron chickpeas', meaning to face a highly difficult situation with resilience."
+            return "Cultural Translation (Hindi):\nScript: अँगूठा दिखाना\nTransliteration: Anguutha dikhaana\nExplanation: A cultural gesture/expression meaning to refuse or reject someone at the last moment."
+        return "Cultural Translation:\nEquivalent regional expressions provided on demand based on language select."
 
     # Planner Agent
     if "planning and automation" in system_prompt.lower():

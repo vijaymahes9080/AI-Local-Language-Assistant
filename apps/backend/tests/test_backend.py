@@ -160,3 +160,28 @@ def test_admin_rbac_protection():
     metrics_res = client.get("/api/v1/admin/metrics", headers=headers)
     # Should get 403 Forbidden
     assert metrics_res.status_code == 403
+
+# ==========================================
+# 3. CULTURAL LOCALIZER AGENT TESTS
+# ==========================================
+def test_cultural_localizer_routing_and_response():
+    from app.core.agents.orchestrator import AgentOrchestrator
+    
+    # Test Tamil idiom routing and translation
+    res_tamil = asyncio.run(AgentOrchestrator.route_and_execute(
+        user_query="Can you explain the Tamil idiom for 'piece of cake'?",
+        user_id="test_user",
+        session_id="test_session"
+    ))
+    assert res_tamil["routed_agent"] == "CULTURAL_LOCALIZER"
+    assert "chickpeas" in res_tamil["content"] or "சுண்டல்" in res_tamil["content"]
+
+    # Test Hindi idiom routing and translation
+    res_hindi = asyncio.run(AgentOrchestrator.route_and_execute(
+        user_query="What is the Hindi equivalent of 'piece of cake' in hindi?",
+        user_id="test_user",
+        session_id="test_session"
+    ))
+    assert res_hindi["routed_agent"] == "CULTURAL_LOCALIZER"
+    assert "बाएँ हाथ" in res_hindi["content"] or "left hand" in res_hindi["content"]
+

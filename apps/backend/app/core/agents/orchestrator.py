@@ -72,6 +72,11 @@ class AgentOrchestrator:
                 system_prompt=prompts.KNOWLEDGE_RAG_SYSTEM_PROMPT,
                 user_prompt=prompt_with_context
             )
+        elif selected_agent == "CULTURAL_LOCALIZER":
+            agent_response = await call_llm(
+                system_prompt=prompts.CULTURAL_LOCALIZER_SYSTEM_PROMPT,
+                user_prompt=user_query
+            )
         else:
             agent_response = await call_llm(
                 system_prompt=prompts.GENERAL_ASSISTANT_SYSTEM_PROMPT,

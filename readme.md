@@ -32,7 +32,7 @@ lingosphere-ai-monorepo/
 │       │   │   ├── db.py      # Async DB session handlers (PostgreSQL + SQLite fallback)
 │       │   │   ├── models.py  # SQLAlchemy schema mappings & SafeVector implementation
 │       │   │   ├── security.py# Prompt firewall, PII redactors, and direct bcrypt hashing
-│       │   │   └── agents/    # Multi-Agent engine (Orchestrator, Translator, Planner, Tutor)
+│       │   │   └── agents/    # Multi-Agent engine (Orchestrator, Translator, Planner, Tutor, Cultural Localizer)
 │       │   ├── routers/       # Router bindings (auth, chat, voice WS, RAG, admin operations)
 │       │   └── main.py        # Gateway entrypoint & lifecycle database seeding
 │       ├── tests/             # Pytest unit & integration security tests
